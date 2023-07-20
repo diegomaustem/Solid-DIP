@@ -1,20 +1,22 @@
 <?php
 
-class Pagamento {
+class Pagamento implements PagadorInterface
+{
 
     public function __construct(
-        private Funcionario $funcionario
+        private PagavelInterface $pagavel
     ) {
 
     }
 
     public function getSalario()
     {
-        if($this->funcionario->getCargo() === "Representante") {
-            return $this->funcionario->getSalarioComComissao();
-        }
+        return $this->pagavel->getRemuneracao();
+    }
 
-        return $this->funcionario->getSalario();
+    public function setPagavel(PagavelInterface $pagavel)
+    {
+        $this->pagavel = $pagavel;
     }
 }
 

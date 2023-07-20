@@ -1,28 +1,25 @@
 <?php
-
-class Funcionario {
-
+class Funcionario implements PagavelInterface 
+{
     public function __construct(
         private string $cargo, 
         private int $salario, 
-        private int $comissao
+        private int $comissao = 0
     ) {
 
-    }
-
-    public function getSalario()
-    {
-        return $this->salario;
-    }
-
-    public function getSalarioComComissao()
-    {
-        return $this->salario + $this->comissao;
     }
 
     public function getCargo()
     {
         return $this->cargo;
+    }
+
+    public function getRemuneracao() 
+    {
+        if($this->getCargo() === "Representante") {
+            return $this->salario + $this->comissao;
+        }
+        return $this->salario;
     }
 }
 
