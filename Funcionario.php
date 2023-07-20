@@ -4,7 +4,7 @@ class Funcionario implements PagavelInterface
     public function __construct(
         private string $cargo, 
         private int $salario, 
-        private int $comissao = 0
+        private int $comissao = 1
     ) {
 
     }
